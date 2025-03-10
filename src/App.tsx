@@ -1,28 +1,38 @@
+import { useState } from "react";
 import "./App.css";
 import { Button } from "./components/ui/Button";
 import { Card } from "./components/ui/Card";
+import { CreateContentModal } from "./components/ui/createContentModal";
 import { PlusIcon } from "./icons/PlusIcon";
 import { ShareIcon } from "./icons/ShareIcon";
 
 function App() {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <div className="p-4">
+      <CreateContentModal
+        open={modalOpen}
+        onClose={() => {
+          setModalOpen(false);
+        }}
+      />
       <div className="flex justify-end gap-4">
-
-      <Button
-        variant={"primary"}
-        size={"md"}
-        startIcon={<ShareIcon size={"md"} />}
-        text={"Share"}
-        onClick={() => {}}
-      ></Button>
-      <Button
-        variant={"secondary"}
-        size={"md"}
-        startIcon={<PlusIcon size={"md"} />}
-        text={"Add Content"}
-        onClick={() => {}}
-      ></Button>
+        <Button
+          variant={"primary"}
+          size={"md"}
+          startIcon={<PlusIcon size={"md"} />}
+          text={"Add Content"}
+          onClick={() => {
+            setModalOpen(true);
+          }}
+        ></Button>
+        <Button
+          variant={"secondary"}
+          size={"md"}
+          startIcon={<ShareIcon size={"md"} />}
+          text={"Share"}
+          onClick={() => {}}
+        ></Button>
       </div>
       <div className="flex gap-4">
         <Card
