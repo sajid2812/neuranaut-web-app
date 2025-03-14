@@ -11,7 +11,7 @@ export function Signup() {
   async function signup() {
     const username = usernameRef.current?.value;
     const password = passwordRef.current?.value;
-    await axios.post(BACKEND_URL, {
+    await axios.post(BACKEND_URL + "/api/v1/signup", {
       username,
       password,
     });
@@ -24,7 +24,7 @@ export function Signup() {
         <Input reference={usernameRef} placeholder="Username" />
         <Input reference={passwordRef} placeholder="Password" />
         <div className="flex justify-center pt-4">
-          <Button variant="primary" text="Signup" fullWidth={true} />
+          <Button onClick={signup} variant="primary" text="Signup" fullWidth={true} />
         </div>
       </div>
     </div>
