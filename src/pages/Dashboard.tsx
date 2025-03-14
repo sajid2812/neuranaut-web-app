@@ -42,11 +42,6 @@ export function Dashboard() {
             link="https://x.com/GoogleIndia/status/1898628906179305805"
             title="First tweet"
           ></Card>
-          <Card
-            type="youtube"
-            link="https://www.youtube.com/watch?v=Y5HIqjf3rek"
-            title="First video"
-          ></Card>
         </div>
       </div>
     </div>
