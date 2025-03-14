@@ -8,10 +8,16 @@ export function Signup() {
   const usernameRef = useRef<any>(null);
   const passwordRef = useRef<any>(null);
 
-  function signup() {
+  async function signup() {
     const username = usernameRef.current?.value;
     const password = passwordRef.current?.value;
-    axios.post(`${BACKEND_URL}`);
+    await axios.post(BACKEND_URL, {
+      data: {
+        username,
+        password,
+      },
+    });
+    alert('You have signed up!')
   }
 
   return (
