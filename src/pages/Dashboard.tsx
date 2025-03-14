@@ -5,9 +5,11 @@ import { CreateContentModal } from "../components/ui/createContentModal";
 import { PlusIcon } from "../icons/PlusIcon";
 import { ShareIcon } from "../icons/ShareIcon";
 import { Sidebar } from "../components/ui/Sidebar";
+import { useContent } from "../hooks/useContent";
 
 export function Dashboard() {
   const [modalOpen, setModalOpen] = useState(false);
+  const contents = useContent();
   return (
     <div>
       <Sidebar />
@@ -37,11 +39,9 @@ export function Dashboard() {
           ></Button>
         </div>
         <div className="flex gap-4">
-          <Card
-            type="twitter"
-            link="https://x.com/GoogleIndia/status/1898628906179305805"
-            title="First tweet"
-          ></Card>
+          {contents.map(({ type, link, title }) => (
+            <Card type={type} link={link} title={title} />
+          ))}
         </div>
       </div>
     </div>
