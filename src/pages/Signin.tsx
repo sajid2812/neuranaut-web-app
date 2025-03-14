@@ -3,10 +3,12 @@ import { useRef } from "react";
 import { Button } from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
 import { BACKEND_URL } from "../config";
+import { useNavigate } from 'react-router-dom'
 
 export function Signin() {
   const usernameRef = useRef<any>(null);
   const passwordRef = useRef<any>(null);
+  const navigate = useNavigate()
 
   async function signin() {
     const username = usernameRef.current?.value;
@@ -17,6 +19,7 @@ export function Signin() {
     });
     const jwt = response.data.token;
     localStorage.setItem("token", jwt);
+    navigate("/dashboard");
     // redirect the user to the dashboard
   }
 

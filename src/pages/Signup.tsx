@@ -3,10 +3,12 @@ import { useRef } from "react";
 import { Button } from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
 import { BACKEND_URL } from "../config";
+import { useNavigate } from "react-router-dom";
 
 export function Signup() {
   const usernameRef = useRef<any>(null);
   const passwordRef = useRef<any>(null);
+  const navigate = useNavigate();
 
   async function signup() {
     const username = usernameRef.current?.value;
@@ -15,7 +17,7 @@ export function Signup() {
       username,
       password,
     });
-    alert("You have signed up!");
+    navigate("/signin");
   }
 
   return (
@@ -24,7 +26,12 @@ export function Signup() {
         <Input reference={usernameRef} placeholder="Username" />
         <Input reference={passwordRef} placeholder="Password" />
         <div className="flex justify-center pt-4">
-          <Button onClick={signup} variant="primary" text="Signup" fullWidth={true} />
+          <Button
+            onClick={signup}
+            variant="primary"
+            text="Signup"
+            fullWidth={true}
+          />
         </div>
       </div>
     </div>
