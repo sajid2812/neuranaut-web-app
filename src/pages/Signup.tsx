@@ -1,6 +1,8 @@
+import axios from "axios";
 import { useRef } from "react";
 import { Button } from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
+import { BACKEND_URL } from "../config";
 
 export function Signup() {
   const usernameRef = useRef<any>(null);
@@ -9,6 +11,7 @@ export function Signup() {
   function signup() {
     const username = usernameRef.current?.value;
     const password = passwordRef.current?.value;
+    axios.post(`${BACKEND_URL}`);
   }
 
   return (
